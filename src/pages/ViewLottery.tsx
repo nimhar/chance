@@ -5,13 +5,10 @@ import {
   Heading,
   VStack,
   Text,
-  useToast,
-  ScaleFade,
   Button,
   Grid,
   GridItem,
   keyframes,
-  useTheme,
   HStack,
 } from '@chakra-ui/react'
 import { useParams, useNavigate } from 'react-router-dom'
@@ -40,7 +37,6 @@ const bounceKeyframes = keyframes`
 const ViewLottery = () => {
   const [assignments, setAssignments] = useState<Assignment[]>([])
   const [showConfetti, setShowConfetti] = useState(false)
-  const [isRevealing, setIsRevealing] = useState(false)
   const { id } = useParams()
   const navigate = useNavigate()
 
@@ -112,7 +108,6 @@ const ViewLottery = () => {
       
       // Start revealing after a short delay
       setTimeout(() => {
-        setIsRevealing(true)
         revealNext(0, newAssignments)
       }, 1000)
     } catch (err) {
@@ -148,7 +143,6 @@ const ViewLottery = () => {
       
       // Start revealing after 3 seconds
       setTimeout(() => {
-        setIsRevealing(true)
         revealNext(0, newAssignments)
       }, 3000)
     } catch (err) {
