@@ -174,17 +174,24 @@ const CreateLottery = () => {
 
   return (
     <Box pt="80px">
-      <Container maxW="800px" py={8}>
-        <VStack spacing={8} align="stretch">
-          <Heading textAlign="center" color="purple.500">Create New Lottery</Heading>
+      <Container maxW={{ base: "100%", md: "800px" }} py={{ base: 4, md: 8 }} px={{ base: 4, md: 8 }}>
+        <VStack spacing={{ base: 6, md: 8 }} align="stretch">
+          <Heading 
+            textAlign="center" 
+            color="purple.500"
+            size={{ base: "lg", md: "xl" }}
+          >
+            Create New Lottery
+          </Heading>
           
           <Box>
-            <Heading size="md" mb={4}>Participants</Heading>
-            <VStack spacing={4} align="stretch">
+            <Heading size={{ base: "md", md: "lg" }} mb={{ base: 3, md: 4 }}>Participants</Heading>
+            <VStack spacing={{ base: 3, md: 4 }} align="stretch">
               {participants.map((participant, index) => (
                 <HStack key={participant.id}>
                   <FormControl isRequired>
                     <Input
+                      size={{ base: "md", md: "lg" }}
                       placeholder={index === 0 ? "e.g., George" : "Enter participant name"}
                       value={participant.name}
                       onChange={(e) => updateParticipant(participant.id, e.target.value)}
@@ -197,25 +204,38 @@ const CreateLottery = () => {
                     variant="ghost"
                     isDisabled={participants.length === 1}
                     onClick={() => removeParticipant(participant.id)}
+                    size={{ base: "md", md: "lg" }}
                   />
                 </HStack>
               ))}
-              <Button leftIcon={<FaPlus />} onClick={addParticipant} variant="ghost">
+              <Button 
+                leftIcon={<FaPlus />} 
+                onClick={addParticipant} 
+                variant="ghost"
+                size={{ base: "md", md: "lg" }}
+                w={{ base: "full", md: "auto" }}
+              >
                 Add Participant
               </Button>
             </VStack>
           </Box>
 
           <Box>
-            <HStack justify="space-between" mb={4}>
+            <HStack 
+              justify="space-between" 
+              mb={{ base: 3, md: 4 }}
+              flexDir={{ base: "column", md: "row" }}
+              spacing={{ base: 4, md: 6 }}
+              align={{ base: "stretch", md: "center" }}
+            >
               {!isMatchingMode && (
-                <Heading size="md">Option{isMultiTask ? 's' : ''}</Heading>
+                <Heading size={{ base: "md", md: "lg" }}>Option{isMultiTask ? 's' : ''}</Heading>
               )}
-              <HStack spacing={6} ml="auto">
-                <HStack>
+              <VStack spacing={4} w={{ base: "full", md: "auto" }}>
+                <HStack w="full" justify="space-between">
                   <FormLabel htmlFor="matching-mode" mb="0">
                     <HStack spacing={2}>
-                      <Text fontSize="sm" color="gray.600">Matching Mode</Text>
+                      <Text fontSize={{ base: "sm", md: "md" }} color="gray.600">Matching Mode</Text>
                       <Tooltip 
                         label="Each participant will be randomly paired with another participant (no self-matching allowed)."
                         placement="top"
@@ -232,13 +252,14 @@ const CreateLottery = () => {
                     colorScheme="purple"
                     isChecked={isMatchingMode}
                     onChange={handleMatchingModeToggle}
+                    size={{ base: "md", md: "lg" }}
                   />
                 </HStack>
                 {!isMatchingMode && (
-                  <HStack>
+                  <HStack w="full" justify="space-between">
                     <FormLabel htmlFor="multi-task" mb="0">
                       <HStack spacing={2}>
-                        <Text fontSize="sm" color="gray.600">Multiple Options</Text>
+                        <Text fontSize={{ base: "sm", md: "md" }} color="gray.600">Multiple Options</Text>
                         <Tooltip 
                           label="In multiple options mode, each participant will be assigned exactly one option. Options will automatically match the number of participants."
                           placement="top"
@@ -256,16 +277,18 @@ const CreateLottery = () => {
                       isChecked={isMultiTask}
                       onChange={handleMultiTaskToggle}
                       isDisabled={isMatchingMode}
+                      size={{ base: "md", md: "lg" }}
                     />
                   </HStack>
                 )}
-              </HStack>
+              </VStack>
             </HStack>
             {!isMatchingMode && (
-              <VStack spacing={4} align="stretch">
+              <VStack spacing={{ base: 3, md: 4 }} align="stretch">
                 {tasks.map((task, index) => (
                   <FormControl key={task.id} isRequired>
                     <Input
+                      size={{ base: "md", md: "lg" }}
                       placeholder={index === 0 ? "e.g., Washing the dishes" : "Enter option here"}
                       value={task.description}
                       onChange={(e) => updateTask(task.id, e.target.value)}
@@ -278,14 +301,20 @@ const CreateLottery = () => {
 
           <Button
             colorScheme="purple"
-            size="lg"
+            size={{ base: "md", md: "lg" }}
             onClick={handleSubmit}
+            w={{ base: "full", md: "auto" }}
+            alignSelf="center"
           >
             Create Lottery
           </Button>
 
-          {/* Add copyright notice */}
-          <Text fontSize="sm" color="gray.500" mt={8}>
+          <Text 
+            fontSize={{ base: "xs", md: "sm" }} 
+            color="gray.500" 
+            mt={{ base: 6, md: 8 }}
+            textAlign="center"
+          >
             All rights reserved to{' '}
             <a 
               href="https://github.com/nimhar" 

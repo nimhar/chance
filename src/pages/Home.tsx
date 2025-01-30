@@ -14,7 +14,7 @@ const Feature = ({ icon, title, description }: FeatureProps) => {
 
   return (
     <VStack
-      p={6}
+      p={{ base: 4, md: 6 }}
       bg={bgColor}
       borderRadius="lg"
       border="1px"
@@ -24,9 +24,9 @@ const Feature = ({ icon, title, description }: FeatureProps) => {
       transition="transform 0.2s"
       _hover={{ transform: 'translateY(-4px)' }}
     >
-      <Icon as={icon} boxSize={10} color="purple.500" />
-      <Heading size="md">{title}</Heading>
-      <Text color="gray.600">{description}</Text>
+      <Icon as={icon} boxSize={{ base: 8, md: 10 }} color="purple.500" />
+      <Heading size={{ base: "sm", md: "md" }}>{title}</Heading>
+      <Text color="gray.600" fontSize={{ base: "sm", md: "md" }}>{description}</Text>
     </VStack>
   )
 }
@@ -34,17 +34,24 @@ const Feature = ({ icon, title, description }: FeatureProps) => {
 const Home = () => {
   return (
     <Box pt="80px">
-      <Container maxW="1200px" py={16}>
-        <VStack spacing={8} align="center" mb={16}>
+      <Container maxW={{ base: "100%", md: "90%", lg: "1200px" }} py={{ base: 8, md: 16 }} px={{ base: 4, md: 8 }}>
+        <VStack spacing={{ base: 6, md: 8 }} align="center" mb={{ base: 12, md: 16 }}>
           <Heading
-            size="2xl"
+            size={{ base: "xl", md: "2xl" }}
             bgGradient="linear(to-r, purple.500, pink.500)"
             bgClip="text"
             textAlign="center"
+            px={2}
           >
-            🎲🎲 Random Assignment Made Fun!
+            ⚀⚅ Random Assignment Made Fun!
           </Heading>
-          <Text fontSize="xl" textAlign="center" maxW="800px" color="gray.600">
+          <Text 
+            fontSize={{ base: "md", md: "xl" }} 
+            textAlign="center" 
+            maxW="800px" 
+            color="gray.600"
+            px={2}
+          >
             Welcome to Chance - where we turn the challenge of assigning tasks into an exciting game!
             Whether you're dividing household chores, selecting secret santa pairs, or randomly assigning any tasks,
             we make it fair and fun with our animated lottery wheel.
@@ -52,15 +59,20 @@ const Home = () => {
           <Button
             as={RouterLink}
             to="/create"
-            size="lg"
+            size={{ base: "md", md: "lg" }}
             colorScheme="purple"
             leftIcon={<FaDice />}
+            w={{ base: "full", md: "auto" }}
           >
             Create New Lottery
           </Button>
         </VStack>
 
-        <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8}>
+        <SimpleGrid 
+          columns={{ base: 1, md: 2, lg: 4 }} 
+          spacing={{ base: 4, md: 8 }}
+          px={{ base: 2, md: 0 }}
+        >
           <Feature
             icon={FaUsers}
             title="Fair Distribution"
