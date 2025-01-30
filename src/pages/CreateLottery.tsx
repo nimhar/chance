@@ -125,6 +125,17 @@ const CreateLottery = () => {
       return
     }
 
+    if (participants.length < 2) {
+      toast({
+        title: 'Error',
+        description: 'At least 2 participants are required for the lottery',
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+      })
+      return
+    }
+
     if (!isMatchingMode && tasks.some(t => !t.description.trim())) {
       toast({
         title: 'Error',

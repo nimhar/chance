@@ -1,6 +1,6 @@
 import { Box, Container, Heading, Text, Button, SimpleGrid, Icon, VStack, useColorModeValue } from '@chakra-ui/react'
 import { Link as RouterLink } from 'react-router-dom'
-import { FaDice, FaUsers, FaTrophy, FaLaugh } from 'react-icons/fa'
+import { FaDice, FaUsers, FaTrophy, FaRandom, FaLaugh } from 'react-icons/fa'
 
 interface FeatureProps {
   icon: React.ElementType
@@ -42,11 +42,12 @@ const Home = () => {
             bgClip="text"
             textAlign="center"
           >
-            Make Chores Fun with Random Assignments
+            🎲🎲 Random Assignment Made Fun!
           </Heading>
           <Text fontSize="xl" textAlign="center" maxW="800px" color="gray.600">
-            Transform boring household tasks into an exciting game of chance.
-            Create fair and random assignments for chores, tasks, or any group activities!
+            Welcome to Chance - where we turn the challenge of assigning tasks into an exciting game!
+            Whether you're dividing household chores, selecting secret santa pairs, or randomly assigning any tasks,
+            we make it fair and fun with our animated lottery wheel.
           </Text>
           <Button
             as={RouterLink}
@@ -59,21 +60,26 @@ const Home = () => {
           </Button>
         </VStack>
 
-        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
+        <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8}>
           <Feature
             icon={FaUsers}
             title="Fair Distribution"
-            description="Ensure everyone gets their fair share of responsibilities through random assignment."
+            description="Ensure everyone gets their fair share through our random assignment system. Perfect for groups of 2 or more!"
           />
           <Feature
             icon={FaTrophy}
-            title="Gamified Experience"
-            description="Turn mundane tasks into an engaging experience with our animated lottery system."
+            title="Engaging Experience"
+            description="Watch our animated wheel spin and build excitement as it selects the winner. Complete with celebration effects!"
+          />
+          <Feature
+            icon={FaRandom}
+            title="Multiple Modes"
+            description="Choose between single task assignment, multiple tasks, or participant matching mode for different scenarios."
           />
           <Feature
             icon={FaLaugh}
             title="Fun & Social"
-            description="Make chore assignment a fun group activity and eliminate arguments about task distribution."
+            description="Transform task assignment into an engaging group activity. No more arguments about who does what!"
           />
         </SimpleGrid>
       </Container>

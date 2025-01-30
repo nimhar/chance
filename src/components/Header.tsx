@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <Box bg="white" boxShadow="sm" position="fixed" width="100%" top={0} zIndex={10}>
       <Container maxW="800px" py={4}>
-        <HStack spacing={8} justify="center" align="center">
+        <HStack spacing={8} justify="flex-start" align="center">
           <Heading 
             size="lg" 
             bgGradient="linear(to-r, purple.500, pink.500)" 
@@ -15,7 +15,7 @@ const Header = () => {
             cursor="pointer"
             onClick={() => navigate('/')}
           >
-            🎲 Chance
+            🎲🎲 Chance
           </Heading>
           <HStack spacing={4}>
             <Button
