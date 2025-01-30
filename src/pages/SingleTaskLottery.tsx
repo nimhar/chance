@@ -180,24 +180,23 @@ const SingleTaskLottery = () => {
 
   return (
     <Box pt="80px" minH="100vh" bg="gray.50">
-      <Container maxW="800px" py={8}>
+      <Container maxW={{ base: "100%", md: "800px" }} py={{ base: 4, md: 8 }} px={{ base: 4, md: 8 }}>
         {showConfetti && <Confetti numberOfPieces={300} recycle={false} />}
         
-        <VStack spacing={8} align="center">
+        <VStack spacing={{ base: 6, md: 8 }} align="center">
           <Heading 
             textAlign="center" 
-            fontSize="3xl"
+            fontSize={{ base: "2xl", md: "3xl" }}
             bgGradient="linear(to-r, purple.500, pink.500)"
             bgClip="text"
           >
-            {/* {winner ? `${winner} will ${task}` : `Who will ${task}?`} */}
             {`Who will ${task}?`}
           </Heading>
 
           {participants.length === 1 ? (
             <Box
               bg="white"
-              p={6}
+              p={{ base: 4, md: 6 }}
               borderRadius="xl"
               boxShadow="lg"
               textAlign="center"
@@ -206,7 +205,7 @@ const SingleTaskLottery = () => {
             >
               <Heading
                 textAlign="center" 
-                fontSize="4xl"
+                fontSize={{ base: "3xl", md: "4xl" }}
                 bgGradient="linear(to-r, orange.400, yellow.400)"
                 bgClip="text"
                 mb={2}
@@ -217,7 +216,7 @@ const SingleTaskLottery = () => {
           ) : (
             <Box
               bg="white"
-              p={6}
+              p={{ base: 4, md: 6 }}
               borderRadius="xl"
               boxShadow="lg"
               textAlign="center"
@@ -226,7 +225,7 @@ const SingleTaskLottery = () => {
             >
               <Heading
                 textAlign="center" 
-                fontSize="4xl"
+                fontSize={{ base: "3xl", md: "4xl" }}
                 bgGradient="linear(to-r, orange.400, yellow.400)"
                 bgClip="text"
                 mb={2}
@@ -236,7 +235,7 @@ const SingleTaskLottery = () => {
               {winner && (
                 <Text
                   textAlign="center"
-                  fontSize="xl"
+                  fontSize={{ base: "lg", md: "xl" }}
                   color="gray.600"
                   mt={2}
                 >
@@ -246,10 +245,15 @@ const SingleTaskLottery = () => {
             </Box>
           )}
 
-          <Box position="relative" h="400px" w="400px">
+          <Box 
+            position="relative" 
+            w={{ base: "300px", md: "400px" }}
+            h={{ base: "300px", md: "400px" }}
+            mx="auto"
+          >
             <svg
-              width="400"
-              height="400"
+              width="100%"
+              height="100%"
               viewBox="-200 -200 400 400"
               style={{
                 transform: `rotate(${rotation}deg)`,
@@ -275,7 +279,7 @@ const SingleTaskLottery = () => {
                       x={textX}
                       y={textY}
                       fill="white"
-                      fontSize="16"
+                      fontSize={participants.length > 8 ? "14" : "16"}
                       fontWeight="bold"
                       textAnchor="middle"
                       dominantBaseline="middle"
@@ -292,31 +296,33 @@ const SingleTaskLottery = () => {
               top="-30px"
               left="50%"
               transform="translateX(-50%)"
-              width="40px"
-              height="60px"
+              width={{ base: "30px", md: "40px" }}
+              height={{ base: "45px", md: "60px" }}
               display="flex"
               alignItems="center"
               justifyContent="center"
               filter="drop-shadow(0 2px 8px rgba(255, 165, 0, 0.5))"
             >
-              <FaLongArrowAltDown size={40} color="#FF8C00" />
+              <FaLongArrowAltDown size={30} color="#FF8C00" />
             </Box>
           </Box>
 
-          <HStack spacing={4} mt={6}>
+          <HStack spacing={4} mt={6} justify="center" flexWrap={{ base: "wrap", md: "nowrap" }}>
             <Button
               colorScheme="orange"
-              size="lg"
+              size={{ base: "md", md: "lg" }}
               onClick={runAgain}
               isDisabled={isSpinning}
+              w={{ base: "full", md: "auto" }}
             >
               {isFirstRun ? "Run Lottery to start" : "Run Again"}
             </Button>
             <Button
               colorScheme="orange"
               variant="outline"
-              size="lg"
+              size={{ base: "md", md: "lg" }}
               onClick={() => navigate('/create')}
+              w={{ base: "full", md: "auto" }}
             >
               Create New Lottery
             </Button>
