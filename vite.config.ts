@@ -14,14 +14,4 @@ export default defineConfig({
       },
     },
   },
-  server: {
-    middleware: [
-      (req, res, next) => {
-        if (req.url?.startsWith('/chance/') && !req.url.includes('.')) {
-          req.url = '/chance/index.html';
-        }
-        next();
-      },
-    ],
-  },
 })

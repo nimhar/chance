@@ -1,10 +1,9 @@
-import { Box, Container, Heading, HStack, Button, Show, IconButton, Menu, MenuButton, MenuList, MenuItem, useBreakpointValue } from '@chakra-ui/react'
+import { Box, Container, Heading, HStack, Button, Show, IconButton, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import { HamburgerIcon } from '@chakra-ui/icons'
 
 const Header = () => {
   const navigate = useNavigate()
-  const isMobile = useBreakpointValue({ base: true, md: false })
 
   return (
     <Box bg="white" boxShadow="sm" position="fixed" width="100%" top={0} zIndex={10}>
