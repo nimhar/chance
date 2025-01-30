@@ -1,5 +1,6 @@
 {
   "name": "chance",
+  "homepage": "https://nimhar.github.io/chance/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
