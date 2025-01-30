@@ -190,7 +190,8 @@ const SingleTaskLottery = () => {
             bgGradient="linear(to-r, purple.500, pink.500)"
             bgClip="text"
           >
-            {winner ? `${winner} will ${task}` : `Who will ${task}?`}
+            {/* {winner ? `${winner} will ${task}` : `Who will ${task}?`} */}
+            {`Who will ${task}?`}
           </Heading>
 
           {participants.length === 1 ? (
@@ -309,7 +310,7 @@ const SingleTaskLottery = () => {
               onClick={runAgain}
               isDisabled={isSpinning}
             >
-              {isFirstRun ? "Run Lottery" : "Run Again"}
+              {isFirstRun ? "Run Lottery to start" : "Run Again"}
             </Button>
             <Button
               colorScheme="orange"
