@@ -267,7 +267,7 @@ const ViewLottery = () => {
               rel="noopener noreferrer"
               style={{ textDecoration: 'underline' }}
             >
-              Nimrod Harel
+              nimhar
             </a>
             {' '}2025
           </Text>

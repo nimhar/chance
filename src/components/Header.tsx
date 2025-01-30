@@ -1,49 +1,40 @@
-import { Box, Flex, Heading, Button, useColorModeValue } from '@chakra-ui/react'
-import { Link as RouterLink } from 'react-router-dom'
-import { FaDice } from 'react-icons/fa'
+import { Box, Container, Heading, HStack, Button } from '@chakra-ui/react'
+import { useNavigate } from 'react-router-dom'
 
 const Header = () => {
-  const bgColor = useColorModeValue('white', 'gray.800')
-  const borderColor = useColorModeValue('gray.200', 'gray.700')
+  const navigate = useNavigate()
 
   return (
-    <Box
-      as="header"
-      position="fixed"
-      top={0}
-      width="100%"
-      bg={bgColor}
-      borderBottom="1px"
-      borderColor={borderColor}
-      zIndex={10}
-      px={4}
-      py={2}
-    >
-      <Flex maxW="1200px" mx="auto" align="center" justify="space-between">
-        <Flex align="center">
-          <FaDice size={24} color="#805AD5" />
-          <Heading as={RouterLink} to="/" size="lg" ml={2} color="purple.500">
-            Chance
+    <Box bg="white" boxShadow="sm" position="fixed" width="100%" top={0} zIndex={10}>
+      <Container maxW="800px" py={4}>
+        <HStack spacing={8} justify="center" align="center">
+          <Heading 
+            size="lg" 
+            bgGradient="linear(to-r, purple.500, pink.500)" 
+            bgClip="text"
+            cursor="pointer"
+            onClick={() => navigate('/')}
+          >
+            🎲 Chance
           </Heading>
-        </Flex>
-        <Flex gap={4}>
-          <Button
-            as={RouterLink}
-            to="/"
-            variant="ghost"
-            colorScheme="purple"
-          >
-            Home
-          </Button>
-          <Button
-            as={RouterLink}
-            to="/create"
-            colorScheme="purple"
-          >
-            Create Lottery
-          </Button>
-        </Flex>
-      </Flex>
+          <HStack spacing={4}>
+            <Button
+              variant="ghost"
+              colorScheme="purple"
+              onClick={() => navigate('/')}
+            >
+              Home
+            </Button>
+            <Button
+              variant="ghost"
+              colorScheme="purple"
+              onClick={() => navigate('/create')}
+            >
+              Create Lottery
+            </Button>
+          </HStack>
+        </HStack>
+      </Container>
     </Box>
   )
 }

@@ -282,7 +282,7 @@ const CreateLottery = () => {
               rel="noopener noreferrer"
               style={{ textDecoration: 'underline' }}
             >
-              Nimrod Harel
+              nimhar
             </a>
             {' '}2025
           </Text>

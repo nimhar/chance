@@ -162,6 +162,11 @@ const SingleTaskLottery = () => {
   }, [])
 
   const getSegmentPath = (index: number) => {
+    // For single participant, draw a full circle
+    if (participants.length === 1) {
+      return `M 0 0 L 200 0 A 200 200 0 1 1 199.99 0 Z`
+    }
+
     const angle = 360 / participants.length
     const startAngle = (index * angle - 90) * (Math.PI / 180)
     const endAngle = ((index + 1) * angle - 90) * (Math.PI / 180)
@@ -188,35 +193,57 @@ const SingleTaskLottery = () => {
             {winner ? `${winner} will ${task}` : `Who will ${task}?`}
           </Heading>
 
-          <Box
-            bg="white"
-            p={6}
-            borderRadius="xl"
-            boxShadow="lg"
-            textAlign="center"
-            mb={4}
-            w="100%"
-          >
-            <Heading
-              textAlign="center" 
-              fontSize="4xl"
-              bgGradient="linear(to-r, orange.400, yellow.400)"
-              bgClip="text"
-              mb={2}
+          {participants.length === 1 ? (
+            <Box
+              bg="white"
+              p={6}
+              borderRadius="xl"
+              boxShadow="lg"
+              textAlign="center"
+              mb={4}
+              w="100%"
             >
-              {winner ? `🎉 ${winner} is the winner! 🎉` : 'The winner is...'}
-            </Heading>
-            {winner && (
-              <Text
-                textAlign="center"
-                fontSize="xl"
-                color="gray.600"
-                mt={2}
+              <Heading
+                textAlign="center" 
+                fontSize="4xl"
+                bgGradient="linear(to-r, orange.400, yellow.400)"
+                bgClip="text"
+                mb={2}
               >
-                {/* {winner} will {task} */}
-              </Text>
-            )}
-          </Box>
+                {participants[0]} will {task}
+              </Heading>
+            </Box>
+          ) : (
+            <Box
+              bg="white"
+              p={6}
+              borderRadius="xl"
+              boxShadow="lg"
+              textAlign="center"
+              mb={4}
+              w="100%"
+            >
+              <Heading
+                textAlign="center" 
+                fontSize="4xl"
+                bgGradient="linear(to-r, orange.400, yellow.400)"
+                bgClip="text"
+                mb={2}
+              >
+                {winner ? `🎉 ${winner} is the winner! 🎉` : 'The winner is...'}
+              </Heading>
+              {winner && (
+                <Text
+                  textAlign="center"
+                  fontSize="xl"
+                  color="gray.600"
+                  mt={2}
+                >
+                  {/* {winner} will {task} */}
+                </Text>
+              )}
+            </Box>
+          )}
 
           <Box position="relative" h="400px" w="400px">
             <svg
@@ -302,7 +329,7 @@ const SingleTaskLottery = () => {
               rel="noopener noreferrer"
               style={{ textDecoration: 'underline' }}
             >
-              Nimrod Harel
+              nimhar
             </a>
             {' '}2025
           </Text>
